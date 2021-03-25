@@ -1,6 +1,6 @@
-const overlay = document.getElementById("overlay");
+const overlay = document.querySelector("#overlay");
 
 const show = () => overlay.style.setProperty("display", "block");
 const hide = () => overlay.style.setProperty("display", "none");
 
-module.exports = {show, hide}
+export default {show, hide};

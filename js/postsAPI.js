@@ -1,7 +1,7 @@
-import keys from './keys';
+const apiUrl = 'http://restedblog.herokuapp.com/f_rodriguez/api/';
 
 const get = (id) => {
-  let url = (id) ? `/api/movies/${id}` : "/api/movies";
+  let url = (id) ? `${apiUrl}/${id}` : apiUrl;
   return fetch(url)
     .then(response => response.json())
 };
@@ -30,8 +30,8 @@ const update = (id, title, rating) => {
     });
 };
 
-const makePoster = (title) => {
-    return fetch(`http://www.omdbapi.com/?apikey=${keys.omdbKey}&t=${title}`)
+const generateImage = (title) => {
+    return fetch(`https://i.picsum.photos/id/724/200/300`)
         .then(movie => movie.json())
 };
 
@@ -46,4 +46,4 @@ const destroy = (id) => {
     }).catch( (error) => console.log(error));
 };
 
-module.exports = {create, update, destroy, get, makePoster};
+export default {create, update, destroy, get, generateImage};
