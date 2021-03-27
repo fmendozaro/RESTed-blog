@@ -4,4 +4,4 @@
 node_modules/
 main.js
 *.map
-/public/keys.js
+js/keys.js

@@ -1,29 +1,12 @@
-# Movies Application
+# RESTed Blog App
 
-For this project, we will be building a single page movie application (SPA). It
-will allow users to add, edit, and delete movies, as well as rate them. We will
-be using [`json-server`](https://github.com/typicode/json-server) to mock a
-database and our backend, so that we can just worry about the front end and AJAX
-requests.
-
-The webpack dev server is configured to watch for changes both in the javascript
-source, as well as the `public` directory. Whenever changes are detected, the
-page will be reloaded. It will also proxy any requests that start with `/api` to
-localhost:3000, which is where json-server is configured run.
-
-`json-server` is configured to have a delay of 1.2 seconds, so you can see what
-your application might actually look like, instead of serving instantaneous
-reponses. You can modify this behavior by changing (or removing) the number
-after the `-d` flag inside of the npm `dev` script.
+description
 
 ## Setup
 
 1. Fork this repository to your own github account or your github organization.
-
 1. Clone your fork
-
 1. Run `npm install`
-
 1. Run `npm run dev` and visit
    [http://localhost:1313/](http://localhost:1313/) in your browser. Open up
    the console and inspect the output.

@@ -27,3 +27,7 @@ html, body {
 #form-modal {
     max-height: 50%;
 }
+
+.action-buttons {
+    margin: 40px 0;
+}
