@@ -23,3 +23,7 @@ html, body {
     text-align: center;
     margin-top: 30%;
 }
+
+#form-modal {
+    max-height: 50%;
+}

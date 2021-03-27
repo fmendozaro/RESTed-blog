@@ -1,3 +1,4 @@
+'use strict';
 const apiUrl = 'http://restedblog.herokuapp.com/f_rodriguez/api/';
 
 const get = (id) => {
@@ -6,25 +7,25 @@ const get = (id) => {
     .then(response => response.json())
 };
 
-const create = (title, rating) => {
-    return fetch("/api/movies", {
+const create = (title, text) => {
+    return fetch(apiUrl, {
         headers: {
             "content-type": "application/json"
         },
         method: "POST",
-        body: JSON.stringify({title, rating})
+        body: JSON.stringify({title, text})
     }).then( (response) => {
         response.json();
     });
 };
 
-const update = (id, title, rating) => {
-    return fetch(`/api/movies/${id}`, {
+const update = (id, title, text) => {
+    return fetch(`${apiUrl}/${id}`, {
         headers: {
             "content-type": "application/json"
         },
-        method: "PUT",
-        body: JSON.stringify({title, rating})
+        method: "POST",
+        body: JSON.stringify({id, title, text})
     }).then( (response) => {
         response.json();
     });
@@ -35,8 +36,13 @@ const generateImage = (title) => {
         .then(movie => movie.json())
 };
 
+/* Destroy
+* CAUTION!!
+* This will delete one blog post if the id is provided or all of them if not after a confirmation is given
+*/
 const destroy = (id) => {
-    return fetch(`/api/movies/${id}`, {
+    let url = (id) ? `${apiUrl}/${id}` : apiUrl;
+    return fetch(url, {
         headers: {
             "content-type": "application/json"
         },
