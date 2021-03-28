@@ -1,5 +1,5 @@
 'use strict';
-const apiUrl = 'http://restedblog.herokuapp.com/f_rodriguez/api/';
+const apiUrl = 'http://restedblog.herokuapp.com/f_rodriguez/api';
 
 const get = (id) => {
   let url = (id) ? `${apiUrl}/${id}` : apiUrl;
@@ -31,11 +31,6 @@ const update = (id, title, text) => {
     });
 };
 
-const generateImage = (title) => {
-    return fetch(`https://i.picsum.photos/id/724/200/300`)
-        .then(movie => movie.json())
-};
-
 /* Destroy
 * CAUTION!!
 * This will delete one blog post if the id is provided or all of them if not after a confirmation is given
@@ -52,4 +47,4 @@ const destroy = (id) => {
     }).catch( (error) => console.log(error));
 };
 
-export default {create, update, destroy, get, generateImage};
+export default {create, update, destroy, get};

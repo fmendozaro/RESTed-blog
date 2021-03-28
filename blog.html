@@ -12,15 +12,17 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col s12">
-            <p hidden class="alert alert-danger hidden" role="alert" id="error"></p>
+        <div class="col s8 offset-s4">
             <h1>RESTed Blog</h1>
         </div>
     </div>
-
     <div class="row">
         <div class="col s12 m4">
             <h3>Past Posts</h3>
+            <!-- Modal Trigger -->
+            <a class="waves-effect waves-light btn btn-small blue modal-trigger left" href="#form-modal" id="show-add-form">
+                <i class="material-icons left">add</i>Create New Post
+            </a>
             <table class="table table-striped table-hover">
                 <thead>
                 <th>Date</th>
@@ -28,9 +30,8 @@
                 </thead>
                 <tbody id="past-posts"></tbody>
             </table>
-            <!-- Modal Trigger -->
-            <a class="waves-effect waves-light btn blue modal-trigger" href="#form-modal" id="show-add-form">
-                <i class="material-icons left">add</i>Create New Post
+            <a class="waves-effect waves-light btn btn-small red right" id="delete-all-btn">
+                <i class="material-icons left">delete_sweep</i>Delete All Posts
             </a>
         </div>
         <div class="col s12 m8" id="posts-list"></div>
@@ -42,10 +43,12 @@
 
 <div class="modal modal-fixed-footer" id="form-modal">
     <div class="modal-content">
-        <a href="#!" class="modal-close waves-effect waves-green btn-flat black white-text right"><i class="material-icons right">close</i>Close</a>
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat black white-text right"><i
+                class="material-icons right">close</i>Close</a>
         <h5 class="modal-title left" id="modal-title">Add a new post</h5>
         <div class="row">
             <form id="add-blog-form" method="post" class="col s12">
+                <br>
                 <div class="row">
                     <div class="input-field col s12">
                         <label for="title">Post Title</label>
