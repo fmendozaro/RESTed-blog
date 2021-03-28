@@ -1,5 +1,5 @@
 'use strict';
-const apiUrl = 'http://restedblog.herokuapp.com/f_rodriguez/api';
+const apiUrl = 'https://restedblog.herokuapp.com/f_rodriguez/api';
 
 const get = (id) => {
   let url = (id) ? `${apiUrl}/${id}` : apiUrl;
