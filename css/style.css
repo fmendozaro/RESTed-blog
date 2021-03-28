@@ -29,11 +29,14 @@ html, body {
 }
 
 .action-buttons, #delete-all-btn {
-    margin: 40px 0;
+    margin: 20px 0;
 }
 
 .post {
     padding: 20px;
+    background-color: #ead2bf;
+    border-radius: 10px;
+    margin: 10px 0;
 }
 
 .post h5:first-child {
@@ -42,5 +45,4 @@ html, body {
 
 .post:nth-child(odd) {
     background-color: #b4c9ee;
-    border-radius: 10px;
 }

@@ -54,7 +54,7 @@ function renderPosts() {
             postsHTML += `
                         <div class="post" class="row">
                            <h5 class="col s6 left">${title}</h5>
-                           <h5 class="col s6 right">Posted on: ${formattedDate}</h5>
+                           <h5 class="col s6 right-align">${formattedDate}</h5>
                            <img width="200" src="https://picsum.photos/200?uuid=${new Date().getTime() + id}" alt="placeholder image" class="hoverable">
                            <div class="col s12">${text}</div>      
                            <div class="action-buttons right-align">
@@ -105,6 +105,20 @@ function modalAction(action){
     }else{
         instance.open();
     }
+}
+
+function validateForm(){
+    let valid = false;
+    let message = '';
+    document.querySelectorAll('.validate').forEach((el) => {
+        valid = el.value.trim() !== '';
+        if (valid === false){
+            message = 'Fields can\'t be empty';
+            return {valid, message};
+        }
+    })
+
+    return {valid, message};
 }
 
 /* Event Listeners */

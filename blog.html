@@ -12,7 +12,7 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col s8 offset-s4">
+        <div class="col s12 m8 offset-m4">
             <h1>RESTed Blog</h1>
         </div>
     </div>
@@ -21,7 +21,7 @@
             <a class="waves-effect waves-light btn btn-small blue modal-trigger" href="#form-modal" id="show-add-form">
                 <i class="material-icons left">add</i>Create New Post
             </a>
-            <h3>Past Posts</h3>
+            <h4>Past Posts</h4>
             <table class="responsive-table striped">
                 <thead>
                 <th>Date</th>
@@ -51,23 +51,21 @@
                 <div class="row">
                     <div class="input-field col s12">
                         <label for="title">Post Title</label>
-                        <input class="validate" type="text" id="title" name="title" required="required">
+                        <input class="validate" type="text" id="title" name="title" required="required" aria-required="true">
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <textarea id="blog-text" class="materialize-textarea" name="blog-text"
-                                  required="required"></textarea>
+                        <textarea id="blog-text" class="materialize-textarea validate" name="blog-text"
+                                  required="required" aria-required="true"></textarea>
                         <label for="blog-text">Blog Content</label>
                     </div>
                 </div>
                 <input type="hidden" name="dbid" id="dbid"/>
+                <button id="add-post-btn" class="btn blue"><i class="material-icons left">save</i>Save</button>
+                <button id="edit-post-btn" class="btn yellow black-text"><i class="material-icons left">edit</i>Update</button>
             </form>
         </div>
-    </div>
-    <div class="modal-footer">
-        <button id="add-post-btn" class="btn blue"><i class="material-icons left">save</i>Save</button>
-        <button id="edit-post-btn" class="btn yellow black-text"><i class="material-icons left">edit</i>Update</button>
     </div>
 </div>
 
