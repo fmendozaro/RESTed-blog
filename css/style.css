@@ -36,6 +36,11 @@ html, body {
     padding: 20px;
 }
 
+.post h5:first-child {
+    color: navy;
+}
+
 .post:nth-child(odd) {
     background-color: #b4c9ee;
+    border-radius: 10px;
 }
