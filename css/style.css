@@ -28,6 +28,14 @@ html, body {
     max-height: 50%;
 }
 
-.action-buttons {
+.action-buttons, #delete-all-btn {
     margin: 40px 0;
+}
+
+.post {
+    padding: 20px;
+}
+
+.post:nth-child(odd) {
+    background-color: #b4c9ee;
 }
