@@ -11,16 +11,20 @@ const saveBtn = document.querySelector("#add-post-btn");
 const editBtn = document.querySelector("#edit-post-btn");
 const modalTitle = document.querySelector("#modal-title");
 const postForm = document.querySelector("#add-blog-form");
-const modals = document.querySelectorAll(".modal");
+const modals = document.querySelectorAll(".modal")[0];
 const postsListDiv = document.querySelector('#posts-list');
 let instances;
 
 // initializes all the components used from MaterializeCSS
-document.addEventListener('DOMContentLoaded', () => instances = M.Modal.init(modals, {"opacity": 0.85}));
+document.addEventListener('DOMContentLoaded', () => {
+    instances = M.Modal.init(modals, {"opacity": 0.85});
+    renderPosts();
+});
 // Start with this function to render the available posts
-renderPosts();
+
 
 function renderPosts() {
+    modalAction('close');
     loading.show();
     postsAPI.get().then((posts) => {
         postsBody.innerHTML = "";
@@ -70,7 +74,6 @@ function renderPosts() {
 
 function addOrEdit(e, action) {
     e.preventDefault();
-    // modals.close();
     loading.show();
     let title = document.querySelector("#title").value;
     let blogText = document.querySelector("#blog-text").value;
@@ -92,6 +95,15 @@ function addOrEdit(e, action) {
         }).catch((error) => {
             console.error(error);
         });
+    }
+}
+
+function modalAction(action){
+    let instance = M.Modal.getInstance(document.querySelectorAll(".modal")[0]);
+    if(action === 'close'){
+        instance.close();
+    }else{
+        instance.open();
     }
 }
 
