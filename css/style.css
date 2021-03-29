@@ -24,10 +24,6 @@ html, body {
     margin-top: 30%;
 }
 
-#form-modal {
-    max-height: 50%;
-}
-
 .action-buttons, #delete-all-btn {
     margin: 20px 0;
 }
@@ -41,6 +37,10 @@ html, body {
 
 .post h5:first-child {
     color: navy;
+    font-family: 'Trocchi', serif;
+    font-weight: normal;
+    line-height: 48px;
+    margin: 0;
 }
 
 .post:nth-child(odd) {

@@ -16,13 +16,12 @@ const postsListDiv = document.querySelector('#posts-list');
 let instances;
 
 // initializes all the components used from MaterializeCSS
+
 document.addEventListener('DOMContentLoaded', () => {
     instances = M.Modal.init(modals, {"opacity": 0.85});
     renderPosts();
 });
 // Start with this function to render the available posts
-
-
 function renderPosts() {
     modalAction('close');
     loading.show();
@@ -58,8 +57,8 @@ function renderPosts() {
                            <img width="200" src="https://picsum.photos/200?uuid=${new Date().getTime() + id}" alt="placeholder image" class="hoverable">
                            <div class="col s12">${text}</div>      
                            <div class="action-buttons right-align">
-                                <a href="#form-modal" class="edit-btns btn yellow black-text waves-effect modal-trigger" data-dbid=${id}>Edit</a>
-                                <a class="delete-btns btn red black-text waves-effect" data-dbid=${id}>Delete</a>
+                                <a href="#form-modal" class="edit-btns btn yellow black-text waves-effect modal-trigger" data-dbid=${id}><i class="material-icons left">edit</i>Edit</a>
+                                <a class="delete-btns btn red black-text waves-effect" data-dbid=${id}><i class="material-icons left">delete</i>Delete</a>
                             </div>
                         </div>`;
             loading.hide();
@@ -71,9 +70,16 @@ function renderPosts() {
         loading.hide();
     });
 }
-
+/*
+* Adds or Edits an existing post depending of the action,
+* since the AJAX request is similar they are handled by the same function
+*/
 function addOrEdit(e, action) {
-    e.preventDefault();
+    let validationResponse = validateForm();
+    if(validationResponse.valid === false){
+        M.toast({html: validationResponse.message, classes: 'rounded red'})
+        return;
+    }
     loading.show();
     let title = document.querySelector("#title").value;
     let blogText = document.querySelector("#blog-text").value;
@@ -97,7 +103,10 @@ function addOrEdit(e, action) {
         });
     }
 }
-
+/*
+* A dynamic function that either opens or closes the modals on Materialize
+* action is the only required parameter
+*/
 function modalAction(action){
     let instance = M.Modal.getInstance(document.querySelectorAll(".modal")[0]);
     if(action === 'close'){
@@ -106,18 +115,20 @@ function modalAction(action){
         instance.open();
     }
 }
-
+/*
+* Validates empty inputs on the form,
+* since I'm using AJAX and Promises the required attr in HTML doesn't catch it automatically
+*/
 function validateForm(){
-    let valid = false;
+    let valid = true;
     let message = '';
     document.querySelectorAll('.validate').forEach((el) => {
-        valid = el.value.trim() !== '';
-        if (valid === false){
+        if (el.value.trim() === ''){
             message = 'Fields can\'t be empty';
+            valid = false;
             return {valid, message};
         }
-    })
-
+    });
     return {valid, message};
 }
 
@@ -139,6 +150,7 @@ editBtn.addEventListener('click', (e) => {
     addOrEdit(e, "edit");
 });
 
+// This function would be behind an authentication layer or a two-factor auth
 deleteAllBtn.addEventListener('click', e => {
     if (confirm('Are you sure?')) {
         postsAPI.destroy().then((response) => {
@@ -151,7 +163,6 @@ deleteAllBtn.addEventListener('click', e => {
 postsListDiv.addEventListener('click', e => {
     let id = e.target.dataset.dbid;
     if (e.target.classList.contains('edit-btns')) {
-        // modals.open();
         modalTitle.innerHTML = "Edit Blog Post";
         saveBtn.classList.add('hide');
         editBtn.classList.remove('hide');
