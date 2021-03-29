@@ -46,3 +46,7 @@ html, body {
 .post:nth-child(odd) {
     background-color: #b4c9ee;
 }
+
+textarea {
+    white-space: pre-wrap;
+}

@@ -184,6 +184,7 @@ postsListDiv.addEventListener('click', e => {
             document.querySelector("#dbid").value = data.id;
             document.querySelector("#blog-text").value = (data.text);
             M.updateTextFields();
+            M.textareaAutoResize(document.querySelector("#blog-text"));
         });
     } else if (e.target.classList.contains('delete-btns')) {
         if (confirm('Are you sure?')) {
