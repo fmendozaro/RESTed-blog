@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
     instances = M.Modal.init(modals, {"opacity": 0.85});
     renderPosts();
 });
+
 // Start with this function to render the available posts
 function renderPosts() {
     modalAction('close');
@@ -30,7 +31,7 @@ function renderPosts() {
         let postsHTML = "";
         let pastPostsHTML = "";
 
-        if(posts.length === 0){
+        if (posts.length === 0) {
             M.toast({html: 'No posts to show', classes: 'rounded red'})
             loading.hide();
             return;
@@ -52,7 +53,7 @@ function renderPosts() {
             postsHTML += `
                         <div class="post" class="row">
                            <h5 class="col s6 left">${title}</h5>
-                           <h5 class="col s6 right-align">${formattedDate}</h5>
+                           <h6 class="col s6 right-align">${formattedDate}</h6>
                            <img width="200" src="https://picsum.photos/200?uuid=${new Date().getTime() + id}" alt="placeholder image" class="hoverable">
                            <div class="col s12">${text}</div>      
                            <div class="action-buttons right-align">
@@ -69,6 +70,7 @@ function renderPosts() {
         loading.hide();
     });
 }
+
 /*
 * Adds or Edits an existing post depending of the action,
 * since the AJAX request is similar they are handled by the same function
@@ -76,7 +78,7 @@ function renderPosts() {
 function addOrEdit(e, action) {
     e.preventDefault();
     let validationResponse = validateForm();
-    if(validationResponse.valid === false){
+    if (validationResponse.valid === false) {
         M.toast({html: validationResponse.message, classes: 'rounded red'})
         return;
     }
@@ -103,27 +105,29 @@ function addOrEdit(e, action) {
         });
     }
 }
+
 /*
 * A dynamic function that either opens or closes the modals on Materialize
 * action is the only required parameter
 */
-function modalAction(action){
+function modalAction(action) {
     let instance = M.Modal.getInstance(document.querySelectorAll(".modal")[0]);
-    if(action === 'close'){
+    if (action === 'close') {
         instance.close();
-    }else{
+    } else {
         instance.open();
     }
 }
+
 /*
 * Validates empty inputs on the form,
 * since I'm using AJAX and Promises the required attr in HTML doesn't catch it automatically
 */
-function validateForm(){
+function validateForm() {
     let valid = true;
     let message = '';
     document.querySelectorAll('.validate').forEach((el) => {
-        if (el.value.trim() === ''){
+        if (el.value.trim() === '') {
             message = 'Fields can\'t be empty';
             valid = false;
             return {valid, message};
