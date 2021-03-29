@@ -10,8 +10,8 @@
 ├── css
 │ └── style.css > Main CSS file
 ├── js
-│ ├── keys.example.js > Main CSS file
-│ ├── keys.js > Main CSS file
+│ ├── keys.example.js > Example JS File with API Keys to export
+│ ├── keys.js > JS File with API Keys to export
 │ ├── loading.js > Main CSS file
 │ ├── main.js > Main CSS file
 │ └── postsAPI.js > JS file where all the promises are taking care of with fetch Web API
