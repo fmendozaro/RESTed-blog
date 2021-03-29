@@ -50,17 +50,18 @@ function renderPosts() {
                 }
             );
             pastPostsHTML += `<tr><td>${formattedDate}</td><td>${title}</td></tr>`;
-            postsHTML += `
-                        <div class="post" class="row">
+            postsHTML += `<div class="post" class="row">
                            <h5 class="col s6 left-align">${title}</h5>
                            <h6 class="col s6 right-align">${formattedDate}</h6>
                            <div class="col s12 center-align">
                                 <img width="200" height="200" src="https://picsum.photos/200?uuid=${new Date().getTime() + id}" alt="placeholder image" class="hoverable center-align">
                            </div>
-                           <div class="col s12">${text}</div>      
-                           <div class="action-buttons right-align">
-                                <a href="#form-modal" class="edit-btns btn yellow black-text waves-effect modal-trigger" data-dbid=${id}><i class="material-icons left">edit</i>Edit</a>
-                                <a class="delete-btns btn red black-text waves-effect" data-dbid=${id}><i class="material-icons left">delete</i>Delete</a>
+                           <div class="col s12">${text}</div>
+                           <div class="row">      
+                               <div class="col s12 action-buttons right-align">
+                                    <a href="#form-modal" class="edit-btns btn yellow black-text waves-effect modal-trigger" data-dbid=${id}><i class="material-icons left">edit</i>Edit</a>
+                                    <a class="delete-btns btn red black-text waves-effect" data-dbid=${id}><i class="material-icons left">delete</i>Delete</a>
+                                </div>
                             </div>
                         </div>`;
             loading.hide();
