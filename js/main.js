@@ -16,7 +16,6 @@ const postsListDiv = document.querySelector('#posts-list');
 let instances;
 
 // initializes all the components used from MaterializeCSS
-
 document.addEventListener('DOMContentLoaded', () => {
     instances = M.Modal.init(modals, {"opacity": 0.85});
     renderPosts();
@@ -75,6 +74,7 @@ function renderPosts() {
 * since the AJAX request is similar they are handled by the same function
 */
 function addOrEdit(e, action) {
+    e.preventDefault();
     let validationResponse = validateForm();
     if(validationResponse.valid === false){
         M.toast({html: validationResponse.message, classes: 'rounded red'})
