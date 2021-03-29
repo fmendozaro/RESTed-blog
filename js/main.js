@@ -154,13 +154,20 @@ editBtn.addEventListener('click', (e) => {
     addOrEdit(e, "edit");
 });
 
-// This function would be behind an authentication layer or a two-factor auth
+/* This function would be behind an authentication layer or a two-factor auth
+* right now it will work with a simple keyphrase match
+*/
 deleteAllBtn.addEventListener('click', e => {
-    if (confirm('Are you sure?')) {
+    let res = prompt('What\'s the keyphrase ?');
+    if (res === 'salesforce') {
         postsAPI.destroy().then((response) => {
             console.log(response);
             renderPosts();
         });
+    } else {
+        if (res !== null) {
+            M.toast({html: 'Wrong Credentials', classes: 'rounded red'});
+        }
     }
 });
 
