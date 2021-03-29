@@ -13,4 +13,5 @@
 │ └── postsAPI.js > JS file where all the promises are taking care of with fetch Web API
 └── readme.txt > The description file of this project
 ```
-- This repo also lives in the cloud in a private repository on my GitHub account, I can make it public temporally or send an invite to take a look of the git commit flow.
+- This repo also lives in the cloud in a public repository on my GitHub account: https://github.com/fmendozaro/RESTed-blog
+- This project was deployed using GitHub pages: https://fmendozaro.github.io/RESTed-blog/blog.html

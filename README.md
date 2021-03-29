@@ -16,4 +16,4 @@
 └── readme.txt > The description file of this project
 ```
 
-This project was deployed using github pages [Live site](https://fmendozaro.github.io/RESTed-blog/blog.html)
+This project was deployed using GitHub pages [Live site](https://fmendozaro.github.io/RESTed-blog/blog.html)
