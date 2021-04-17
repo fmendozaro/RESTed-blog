@@ -15,7 +15,7 @@ const create = (title, text) => {
         method: "POST",
         body: JSON.stringify({title, text})
     }).then( (response) => {
-        response.json();
+        return response.json();
     });
 };
 
