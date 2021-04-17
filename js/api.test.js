@@ -1,9 +1,9 @@
-const postAPI = require('./postsAPI');
+global.fetch = require("node-fetch");
+import postAPI from "./postsAPI";
 
 test('get all posts', () => {
-    expect(1+2).toBe(3);
-    // function callback(data) => {
-    //     expect(data).toBe({"id": 1});
-    // }
-    // postAPI.get(1);
+    return postAPI.get().then( (posts) => {
+        console.log({posts});
+        expect(posts.length).toBeGreaterThan(0);
+    });
 });

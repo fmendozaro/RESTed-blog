@@ -12,5 +12,8 @@
     "transform": {
       "^.+\\.[t|j]sx?$": "babel-jest"
     }
+  },
+  "dependencies": {
+    "node-fetch": "^2.6.1"
   }
 }
