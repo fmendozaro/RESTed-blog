@@ -27,7 +27,7 @@ const update = (id, title, text) => {
         method: "POST",
         body: JSON.stringify({id, title, text})
     }).then( (response) => {
-        response.json();
+        return response.json();
     });
 };
 
