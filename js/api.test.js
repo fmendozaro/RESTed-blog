@@ -2,15 +2,20 @@
 global.fetch = require("node-fetch");
 import postAPI from "./postsAPI";
 
-let tempId = 0;
+let testPost;
+
+beforeAll(() => {
+    postAPI.create('test-title', 'test-body').then( (createdPost) => {
+        testPost = createdPost;
+    });
+});
 
 test('create a post', () => {
-    return postAPI.create('test-title', 'test-body').then( (createdPost) => {
+    return postAPI.create('newest-test-title', 'newest-test-body').then( (createdPost) => {
         expect(createdPost).not.toBeNull();
         expect(createdPost.id).toBeGreaterThan(0);
-        tempId = createdPost.id;
-        expect(createdPost.title).toMatch('test-title');
-        expect(createdPost.text).toMatch('test-body');
+        expect(createdPost.title).toMatch('newest-test-title');
+        expect(createdPost.text).toMatch('newest-test-body');
     });
 });
 
@@ -21,8 +26,17 @@ test('get all posts', () => {
 });
 
 test('get a post', () => {
-    return postAPI.get(tempId).then( post => {
-        expect(post).toBeDefined();
-        expect(post.id).toBe(tempId);
+    return postAPI.get(testPost.id).then( retrievedPost => {
+        expect(retrievedPost).toBeDefined();
+        expect(retrievedPost.id).toBe(testPost.id);
+    });
+});
+
+test('edit a post', () => {
+    return postAPI.update(testPost.id,'edited-test-title', 'edited-test-body').then( (updatedPostPost) => {
+        expect(updatedPostPost).not.toBeNull();
+        expect(updatedPostPost.id).toBe(testPost.id);
+        expect(updatedPostPost.title).toMatch('edited-test-title');
+        expect(updatedPostPost.text).toMatch('edited-test-body');
     });
 });
