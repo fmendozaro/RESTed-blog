@@ -17,3 +17,25 @@
 ```
 
 This project was deployed using GitHub pages [Live site](https://fmendozaro.github.io/RESTed-blog/blog.html)
+
+## Testing
+
+This project uses `npm` to manage the libraries and tools necessary to run automated tests, before running your tests need to install all the dependencies first:
+
+``npm install``
+
+To run the tests on your node cli client, in the root of the project you can execute:
+
+```npm run test```
+
+You should get an output similar to:
+
+``` 
+PASS  js/api.test.js
+
+Test Suites: 1 passed, 1 total
+Tests:       4 passed, 4 total
+Snapshots:   0 total
+Time:        1.258 s, estimated 9 s
+Ran all test suites.
+```
