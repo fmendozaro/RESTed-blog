@@ -5,6 +5,7 @@ import postAPI from "./postsAPI";
 let testPost;
 
 beforeAll(() => {
+    // TODO: Check for timeouts, the api goes to sleep after being idle for a while
     postAPI.create('test-title', 'test-body').then( (createdPost) => {
         testPost = createdPost;
     });
